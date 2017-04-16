@@ -226,15 +226,57 @@ public class DatabaseManager {
     }
 
     public void insertConversations(Object object){
-//        Connection connection = initConnection();
+        Connection connection = initConnection();
         ConversationList conversationList = (ConversationList) object;
-        User userA = conversationList.getConversation().get(0).getUserA();
-        User userB = conversationList.getConversation().get(0).getUserB();
-        UserList userList = new UserList();
-        userList.getUser().add(userA);
-        userList.getUser().add(userB);
-        insertUsers(userList);
+        for(Conversation conversation:conversationList.getConversation()) {
+            User userA = conversation.getUserA();
+            User userB = conversation.getUserB();
+            UserList userList = new UserList();
+            userList.getUser().add(userA);
+            userList.getUser().add(userB);
+            insertUsers(userList);
 
-        //Запрос после вставки в users,dictionary и binding
+            //Запрос после вставки в users,dictionary и binding
+            try {
+                Integer id_userA = null;
+                Integer id_userB = null;
+                PreparedStatement preparedStatement1 =
+                        connection.prepareStatement("select * from users " +
+                                "where nickname = ?");
+                preparedStatement1.setString(1, userA.getNickname());
+                ResultSet resultSet1 = preparedStatement1.executeQuery();
+                while (resultSet1.next()) {
+                    id_userA = resultSet1.getInt("id_user");
+                }
+
+                PreparedStatement preparedStatement2 =
+                        connection.prepareStatement("select * from users " +
+                                "where nickname = ?");
+                preparedStatement2.setString(1, userB.getNickname());
+                ResultSet resultSet2 = preparedStatement2.executeQuery();
+                while (resultSet2.next()) {
+                    id_userB = resultSet2.getInt("id_user");
+                }
+
+                PreparedStatement preparedStatement3 =
+                        connection.prepareStatement("insert into conversations(id_userA, id_userB, conversation)" +
+                                "values (?, ?, ?)");
+
+                if (id_userA < id_userB) {
+                    preparedStatement3.setInt(1, id_userA);
+                    preparedStatement3.setInt(2, id_userB);
+                }
+
+                if (id_userA > id_userB) {
+                    preparedStatement3.setInt(2, id_userA);
+                    preparedStatement3.setInt(1, id_userB);
+                }
+
+                preparedStatement3.setString(3, conversation.getText());
+                preparedStatement3.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

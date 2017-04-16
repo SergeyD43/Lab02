@@ -1,23 +1,73 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <wordList>
     <word>
-        <id>99</id>
-        <originalWord>Москва</originalWord>
-        <translate>Moscow</translate>
+        <id>1</id>
+        <originalWord>Россия</originalWord>
+        <translate>Russia</translate>
     </word>
     <word>
-        <id>99</id>
-        <originalWord>Самара</originalWord>
-        <translate>Samara</translate>
+        <id>2</id>
+        <originalWord>город</originalWord>
+        <translate>city</translate>
     </word>
     <word>
-        <id>99</id>
-        <originalWord>Владивосток</originalWord>
-        <translate>Vladivostok</translate>
+        <id>3</id>
+        <originalWord>река</originalWord>
+        <translate>river</translate>
     </word>
     <word>
-        <id>99</id>
-        <originalWord>Вашингтон</originalWord>
-        <translate>Vashington</translate>
+        <id>4</id>
+        <originalWord>вода</originalWord>
+        <translate>water</translate>
+    </word>
+    <word>
+        <id>5</id>
+        <originalWord>гора</originalWord>
+        <translate>mountain</translate>
+    </word>
+    <word>
+        <id>6</id>
+        <originalWord>озеро</originalWord>
+        <translate>lake</translate>
+    </word>
+    <word>
+        <id>7</id>
+        <originalWord>страна</originalWord>
+        <translate>country</translate>
+    </word>
+    <word>
+        <id>8</id>
+        <originalWord>ракета</originalWord>
+        <translate>missile</translate>
+    </word>
+    <word>
+        <id>9</id>
+        <originalWord>самолет</originalWord>
+        <translate>plane</translate>
+    </word>
+    <word>
+        <id>10</id>
+        <originalWord>животное</originalWord>
+        <translate>animal</translate>
+    </word>
+    <word>
+        <id>11</id>
+        <originalWord>собака</originalWord>
+        <translate>dog</translate>
+    </word>
+    <word>
+        <id>12</id>
+        <originalWord>кот</originalWord>
+        <translate>cat</translate>
+    </word>
+    <word>
+        <id>13</id>
+        <originalWord>обезьяна</originalWord>
+        <translate>monkey</translate>
+    </word>
+    <word>
+        <id>14</id>
+        <originalWord>иностранный</originalWord>
+        <translate>foreign</translate>
     </word>
 </wordList>

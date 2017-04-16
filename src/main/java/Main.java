@@ -19,12 +19,12 @@ public class Main {
 //        xmlManager.marsh(wordList);
         WordList wordList = new WordList();
         Object unmarsh = xmlManager.unmarsh(wordList);
-//        databaseManager.insertWords(unmarsh);
+        databaseManager.insertWords(unmarsh);
 
 
         UserList userList = new UserList();
         Object unmarsh2 = xmlManager.unmarsh(userList);
-//        databaseManager.insertUsers(unmarsh2);
+        databaseManager.insertUsers(unmarsh2);
 
         ConversationList conversationList = new ConversationList();
         Object unmarsh3 = xmlManager.unmarsh(conversationList);

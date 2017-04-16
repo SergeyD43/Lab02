@@ -2,41 +2,137 @@
 <conversationList>
     <conversation>
         <userA>
-            <id>10</id>
-            <nickname>alex</nickname>
-            <name>Александр</name>
-            <surname>Пушкин</surname>
-            <password>pasalex</password>
+            <id>1</id>
+            <nickname>vasya</nickname>
+            <name>Вася</name>
+            <surname>Пупкин</surname>
+            <password>pasvasya</password>
             <words>
                 <word>
-                    <originalWord>солнце</originalWord>
-                    <translate>sun</translate>
+                    <originalWord>гора</originalWord>
+                    <translate>mountain</translate>
                 </word>
                 <word>
-                    <originalWord>марс</originalWord>
-                    <translate>mars</translate>
+                    <originalWord>озеро</originalWord>
+                    <translate>lake</translate>
                 </word>
                 <word>
-                    <originalWord>космос</originalWord>
-                    <translate>space</translate>
+                    <originalWord>страна</originalWord>
+                    <translate>country</translate>
                 </word>
             </words>
             <isAdmin>false</isAdmin>
         </userA>
         <userB>
-            <id>15</id>
-            <nickname>barak</nickname>
-            <name>Барак</name>
-            <surname>Обама</surname>
-            <password>pasbarak</password>
+            <id>3</id>
+            <nickname>roma</nickname>
+            <name>Роман</name>
+            <surname>Романов</surname>
+            <password>pasroma</password>
             <words>
                 <word>
-                    <originalWord>Флорида</originalWord>
-                    <translate>Florida</translate>
+                    <originalWord>Россия</originalWord>
+                    <translate>Russia</translate>
+                </word>
+                <word>
+                    <originalWord>город</originalWord>
+                    <translate>city</translate>
+                </word>
+                <word>
+                    <originalWord>река</originalWord>
+                    <translate>river</translate>
+                </word>
+                <word>
+                    <originalWord>вода</originalWord>
+                    <translate>water</translate>
+                </word>
+                <word>
+                    <originalWord>страна</originalWord>
+                    <translate>country</translate>
+                </word>
+                <word>
+                    <originalWord>животное</originalWord>
+                    <translate>animal</translate>
+                </word>
+                <word>
+                    <originalWord>иностранный</originalWord>
+                    <translate>foreign</translate>
                 </word>
             </words>
             <isAdmin>false</isAdmin>
         </userB>
-        <text>текст 1</text>
+        <text>conversation 1-3</text>
+    </conversation>
+    <conversation>
+        <userA>
+            <id>1</id>
+            <nickname>vasya</nickname>
+            <name>Вася</name>
+            <surname>Пупкин</surname>
+            <password>pasvasya</password>
+            <words>
+                <word>
+                    <originalWord>гора</originalWord>
+                    <translate>mountain</translate>
+                </word>
+                <word>
+                    <originalWord>озеро</originalWord>
+                    <translate>lake</translate>
+                </word>
+                <word>
+                    <originalWord>страна</originalWord>
+                    <translate>country</translate>
+                </word>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userA>
+        <userB>
+            <id>5</id>
+            <nickname>donald</nickname>
+            <name>Дональд</name>
+            <surname>Трамп</surname>
+            <password>pasdonald</password>
+            <words>
+                <word/>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userB>
+        <text>conversation 1-5</text>
+    </conversation>
+    <conversation>
+        <userA>
+            <id>4</id>
+            <nickname>angela</nickname>
+            <name>Ангела</name>
+            <surname>Меркель</surname>
+            <password>pasangela</password>
+            <words>
+                <word>
+                    <originalWord>Россия</originalWord>
+                    <translate>Russia</translate>
+                </word>
+                <word>
+                    <originalWord>река</originalWord>
+                    <translate>river</translate>
+                </word>
+                <word>
+                    <originalWord>вода</originalWord>
+                    <translate>water</translate>
+                </word>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userA>
+        <userB>
+            <id>5</id>
+            <nickname>donald</nickname>
+            <name>Дональд</name>
+            <surname>Трамп</surname>
+            <password>pasdonald</password>
+            <words>
+                <word/>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userB>
+        <text>conversation 4-5</text>
     </conversation>
 </conversationList>
