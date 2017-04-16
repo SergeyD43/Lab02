@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<userList>
+    <user>
+        <id>1</id>
+        <nickname>vanya</nickname>
+        <name>Ваня</name>
+        <surname>Иванов</surname>
+        <password>pasvanya</password>
+        <words>
+            <word>
+                <originalWord>лес</originalWord>
+                <translate>forest</translate>
+            </word>
+            <word>
+                <originalWord>цветы</originalWord>
+                <translate>flowers</translate>
+            </word>
+            <word>
+                <originalWord>рыба</originalWord>
+                <translate>fish</translate>
+            </word>
+        </words>
+        <isAdmin>false</isAdmin>
+    </user>
+    <user>
+        <id>2</id>
+        <nickname>doctor</nickname>
+        <name>Доктор</name>
+        <surname>Докторов</surname>
+        <password>pasdoctor</password>
+        <words>
+            <word>
+                <originalWord>оружие</originalWord>
+                <translate>weapons</translate>
+            </word>
+            <word>
+                <originalWord>танк</originalWord>
+                <translate>tank</translate>
+            </word>
+            <word>
+                <originalWord>вертолет</originalWord>
+                <translate>helicopter</translate>
+            </word>
+        </words>
+        <isAdmin>false</isAdmin>
+    </user>
+</userList>

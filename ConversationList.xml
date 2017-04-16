@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<conversationList>
+    <conversation>
+        <userA>
+            <id>10</id>
+            <nickname>alex</nickname>
+            <name>Александр</name>
+            <surname>Пушкин</surname>
+            <password>pasalex</password>
+            <words>
+                <word>
+                    <originalWord>солнце</originalWord>
+                    <translate>sun</translate>
+                </word>
+                <word>
+                    <originalWord>марс</originalWord>
+                    <translate>mars</translate>
+                </word>
+                <word>
+                    <originalWord>космос</originalWord>
+                    <translate>space</translate>
+                </word>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userA>
+        <userB>
+            <id>15</id>
+            <nickname>barak</nickname>
+            <name>Барак</name>
+            <surname>Обама</surname>
+            <password>pasbarak</password>
+            <words>
+                <word>
+                    <originalWord>Флорида</originalWord>
+                    <translate>Florida</translate>
+                </word>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userB>
+        <text>текст 1</text>
+    </conversation>
+</conversationList>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="user.xsd"/>
+
+        <xs:complexType name="conversation">
+            <xs:sequence>
+                <xs:element name="userA" type="user"/>
+                <xs:element name="userB" type="user"/>
+                <xs:element name="text" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+
+</xs:schema>

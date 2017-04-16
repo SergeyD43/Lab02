@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wordList>
+    <word>
+        <id>99</id>
+        <originalWord>Москва</originalWord>
+        <translate>Moscow</translate>
+    </word>
+    <word>
+        <id>99</id>
+        <originalWord>Самара</originalWord>
+        <translate>Samara</translate>
+    </word>
+    <word>
+        <id>99</id>
+        <originalWord>Владивосток</originalWord>
+        <translate>Vladivostok</translate>
+    </word>
+    <word>
+        <id>99</id>
+        <originalWord>Вашингтон</originalWord>
+        <translate>Vashington</translate>
+    </word>
+</wordList>
