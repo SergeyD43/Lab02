@@ -12,6 +12,10 @@ public class XmlManager {
 
     private static final Logger logger = Logger.getLogger(XmlManager.class);
 
+    /**
+     * Маршаллинг объекта в XML файл
+     * @param object экспортируемый объект
+     */
     public void marsh(Object object){
         try {
             File file = new File(object.getClass().getSimpleName() + ".xml");
@@ -19,9 +23,8 @@ public class XmlManager {
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
             jaxbMarshaller.marshal(object, file);
-//            jaxbMarshaller.marshal(object, System.out);
+
             logger.info("Объект сохранен в файл: " + object.getClass().getSimpleName() + ".xml");
         } catch (JAXBException e) {
             logger.error("Не удалось экспортировать файл: " +
@@ -29,6 +32,11 @@ public class XmlManager {
         }
     }
 
+    /**
+     * Анмаршаллинг
+     * @param object импортируемый объект
+     * @return Object
+     */
     public Object unmarsh(Object object){
         try {
             File file = new File(object.getClass().getSimpleName() + ".xml");

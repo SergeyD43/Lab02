@@ -11,6 +11,10 @@ public class DatabaseManager {
 
     private static final Logger logger = Logger.getLogger(DatabaseManager.class);
 
+    /**
+     * Соединение с БД
+     * @return Connection
+     */
     public Connection initConnection(){
         Connection connection = null;
         try {
@@ -29,6 +33,10 @@ public class DatabaseManager {
         return connection;
     }
 
+    /**
+     * Выполняет запрос, для получения списка users
+     * @return users
+     */
     public UserList selectUsers(){
         Connection connection = initConnection();
         UserList setUsers = new UserList();
@@ -79,6 +87,10 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Выполняет запрос, для получения списка conversations
+     * @return conversations
+     */
     public ConversationList selectConversation(){
         Connection connection = initConnection();
         ConversationList conversationList = new ConversationList();
@@ -116,6 +128,10 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Выполняет запрос, для получения списка слов
+     * @return words
+     */
     public WordList selectWords(){
         Connection connection = initConnection();
         WordList wordList = new WordList();
@@ -141,6 +157,10 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Добавление words в БД
+     * @param object words
+     */
     public void insertWords(Object object){
         Connection connection = initConnection();
         WordList wordList = (WordList) object;
@@ -179,6 +199,10 @@ public class DatabaseManager {
 
     private List<String> doplistWords = new ArrayList<String>();
 
+    /**
+     * Добавление users в БД
+     * @param object users
+     */
     public void insertUsers(Object object){
         Connection connection = initConnection();
         UserList userList = (UserList) object;
@@ -273,6 +297,10 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Добавление conversations в БД
+     * @param object conversations
+     */
     public void insertConversations(Object object){
         Connection connection = initConnection();
         ConversationList conversationList = (ConversationList) object;
@@ -334,6 +362,9 @@ public class DatabaseManager {
         doplistWords = new ArrayList<String>();
     }
 
+    /**
+     * Чистит БД
+     */
     public void clearDatabase(){
         Connection connection = initConnection();
 
