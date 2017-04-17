@@ -1,5 +1,7 @@
 package utils;
 
+import org.apache.log4j.Logger;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -7,6 +9,9 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 public class XmlManager {
+
+    private static final Logger logger = Logger.getLogger(XmlManager.class);
+
     public void marsh(Object object){
         try {
             File file = new File(object.getClass().getSimpleName() + ".xml");
@@ -16,24 +21,25 @@ public class XmlManager {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             jaxbMarshaller.marshal(object, file);
-            jaxbMarshaller.marshal(object, System.out);
-
+//            jaxbMarshaller.marshal(object, System.out);
+            logger.info("Объект сохранен в файл: " + object.getClass().getSimpleName() + ".xml");
         } catch (JAXBException e) {
-            e.printStackTrace();
+            logger.error("Не удалось экспортировать файл: " +
+                    object.getClass().getSimpleName() + ".xml" + ":" + e.getMessage());
         }
     }
 
     public Object unmarsh(Object object){
         try {
-
             File file = new File(object.getClass().getSimpleName() + ".xml");
             JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass());
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             object = jaxbUnmarshaller.unmarshal(file);
-
+            logger.info("Объект загружен из файла: " + object.getClass().getSimpleName() + ".xml");
         } catch (JAXBException e) {
-            e.printStackTrace();
+            logger.error("Не удалось импортировать файл: " +
+                    object.getClass().getSimpleName() + ".xml" + ":" + e.getMessage());
         } finally {
             return object;
         }

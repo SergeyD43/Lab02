@@ -1,24 +1,30 @@
 package utils;
 
 import GenerateClasses.*;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager {
+
+    private static final Logger logger = Logger.getLogger(DatabaseManager.class);
+
     public Connection initConnection(){
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.fatal("Отсутствует драйвер базы данных");
         }
         try {
+
             connection =
                     DriverManager.getConnection("jdbc:mysql://localhost:3306/school","root", "123456");
+            logger.info("Соедиение с базой данных установлено");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.fatal("Не удалось установить соединение с базой данных");
         }
         return connection;
     }
@@ -67,7 +73,7 @@ public class DatabaseManager {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         } finally {
             return setUsers;
         }
@@ -104,7 +110,7 @@ public class DatabaseManager {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         } finally {
             return conversationList;
         }
@@ -129,7 +135,7 @@ public class DatabaseManager {
                 wordList.getWord().add(word1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         } finally {
             return wordList;
         }
@@ -151,7 +157,7 @@ public class DatabaseManager {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         }
 
         try {
@@ -167,7 +173,7 @@ public class DatabaseManager {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         }
     }
 
@@ -176,7 +182,6 @@ public class DatabaseManager {
     public void insertUsers(Object object){
         Connection connection = initConnection();
         UserList userList = (UserList) object;
-
 
         List<String> doplist = new ArrayList<String>();
         Statement statement = null;
@@ -190,23 +195,8 @@ public class DatabaseManager {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         }
-
-//        List<String> doplistWords = new ArrayList<String>();
-////        Statement statement = null;
-//        try {
-//            statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery("select * from dictionary");
-//
-//            while (resultSet.next()){
-//                String originalWord = resultSet.getString("word");
-//                doplistWords.add(originalWord);
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
 
         for(User myuser:userList.getUser()) {
             if(doplist.contains(myuser.getNickname()))
@@ -278,7 +268,7 @@ public class DatabaseManager {
                 }
 
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error("Ошибка при выполении запроса: " + e.getMessage());
             }
         }
     }
@@ -286,7 +276,6 @@ public class DatabaseManager {
     public void insertConversations(Object object){
         Connection connection = initConnection();
         ConversationList conversationList = (ConversationList) object;
-//        UserList helpUserList  = new UserList();
         ArrayList<User> userArrayList = new ArrayList<User>();
         for(Conversation conversation:conversationList.getConversation()) {
             User userA = conversation.getUserA();
@@ -339,7 +328,7 @@ public class DatabaseManager {
                 preparedStatement3.setString(3, conversation.getText());
                 preparedStatement3.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error("Ошибка при выполении запроса: " + e.getMessage());
             }
         }
         doplistWords = new ArrayList<String>();
@@ -357,7 +346,7 @@ public class DatabaseManager {
             statement.executeQuery("truncate table users");
             statement.executeQuery("SET FOREIGN_KEY_CHECKS = 1");
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Ошибка при выполении запроса: " + e.getMessage());
         }
     }
 }
