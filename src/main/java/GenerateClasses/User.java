@@ -81,6 +81,25 @@ public class User {
     public User() {
     }
 
+    @Override
+    public int hashCode() {
+        return nickname.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null)
+            return false;
+
+        if(!(obj instanceof User))
+            return false;
+
+        if(!(nickname.equals(((User) obj).nickname)))
+            return false;
+
+        return true;
+    }
+
     public User(int id, String nickname, String name, String surname, String password, boolean isAdmin) {
         this.id = id;
         this.nickname = nickname;

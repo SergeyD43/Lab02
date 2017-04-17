@@ -10,24 +10,30 @@ public class Main {
         DatabaseManager databaseManager = new DatabaseManager();
         XmlManager xmlManager = new XmlManager();
 
-//        ConversationList conversationList = databaseManager.selectConversation();
-//        UserList userList = databaseManager.selectUsers();
-//        WordList wordList = databaseManager.selectWords();
-//
-//        xmlManager.marsh(conversationList);
-//        xmlManager.marsh(userList);
-//        xmlManager.marsh(wordList);
-        WordList wordList = new WordList();
-        Object unmarsh = xmlManager.unmarsh(wordList);
+        //Из БД в XML
+        ConversationList conversationList = databaseManager.selectConversation();
+        UserList userList = databaseManager.selectUsers();
+        WordList wordList = databaseManager.selectWords();
+
+        xmlManager.marsh(conversationList);
+        xmlManager.marsh(userList);
+        xmlManager.marsh(wordList);
+
+        //Чистка базы
+        databaseManager.clearDatabase();
+
+        //Из XML в БД
+        WordList wordList2 = new WordList();
+        UserList userList2 = new UserList();
+        ConversationList conversationList2 = new ConversationList();
+
+        Object unmarsh = xmlManager.unmarsh(wordList2);
+        Object unmarsh2 = xmlManager.unmarsh(userList2);
+        Object unmarsh3 = xmlManager.unmarsh(conversationList2);
+
+        databaseManager.insertConversations(unmarsh3);
+        databaseManager.insertUsers(unmarsh2);
         databaseManager.insertWords(unmarsh);
 
-
-        UserList userList = new UserList();
-        Object unmarsh2 = xmlManager.unmarsh(userList);
-        databaseManager.insertUsers(unmarsh2);
-
-        ConversationList conversationList = new ConversationList();
-        Object unmarsh3 = xmlManager.unmarsh(conversationList);
-        databaseManager.insertConversations(unmarsh3);
     }
 }

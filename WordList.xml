@@ -2,72 +2,72 @@
 <wordList>
     <word>
         <id>1</id>
-        <originalWord>Россия</originalWord>
-        <translate>Russia</translate>
-    </word>
-    <word>
-        <id>2</id>
-        <originalWord>город</originalWord>
-        <translate>city</translate>
-    </word>
-    <word>
-        <id>3</id>
-        <originalWord>река</originalWord>
-        <translate>river</translate>
-    </word>
-    <word>
-        <id>4</id>
-        <originalWord>вода</originalWord>
-        <translate>water</translate>
-    </word>
-    <word>
-        <id>5</id>
         <originalWord>гора</originalWord>
         <translate>mountain</translate>
     </word>
     <word>
-        <id>6</id>
+        <id>2</id>
         <originalWord>озеро</originalWord>
         <translate>lake</translate>
     </word>
     <word>
-        <id>7</id>
+        <id>3</id>
         <originalWord>страна</originalWord>
         <translate>country</translate>
     </word>
     <word>
+        <id>4</id>
+        <originalWord>Россия</originalWord>
+        <translate>Russia</translate>
+    </word>
+    <word>
+        <id>5</id>
+        <originalWord>город</originalWord>
+        <translate>city</translate>
+    </word>
+    <word>
+        <id>6</id>
+        <originalWord>река</originalWord>
+        <translate>river</translate>
+    </word>
+    <word>
+        <id>7</id>
+        <originalWord>вода</originalWord>
+        <translate>water</translate>
+    </word>
+    <word>
         <id>8</id>
-        <originalWord>ракета</originalWord>
-        <translate>missile</translate>
-    </word>
-    <word>
-        <id>9</id>
-        <originalWord>самолет</originalWord>
-        <translate>plane</translate>
-    </word>
-    <word>
-        <id>10</id>
         <originalWord>животное</originalWord>
         <translate>animal</translate>
     </word>
     <word>
+        <id>9</id>
+        <originalWord>иностранный</originalWord>
+        <translate>foreign</translate>
+    </word>
+    <word>
+        <id>10</id>
+        <originalWord>ракета</originalWord>
+        <translate>missile</translate>
+    </word>
+    <word>
         <id>11</id>
+        <originalWord>самолет</originalWord>
+        <translate>plane</translate>
+    </word>
+    <word>
+        <id>12</id>
         <originalWord>собака</originalWord>
         <translate>dog</translate>
     </word>
     <word>
-        <id>12</id>
+        <id>13</id>
         <originalWord>кот</originalWord>
         <translate>cat</translate>
     </word>
     <word>
-        <id>13</id>
+        <id>14</id>
         <originalWord>обезьяна</originalWord>
         <translate>monkey</translate>
-    </word>
-    <word>
-        <id>14</id>
-        <originalWord>иностранный</originalWord>
-        <translate>foreign</translate>
     </word>
 </wordList>

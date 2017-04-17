@@ -3,6 +3,7 @@ package utils;
 import GenerateClasses.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager {
@@ -137,6 +138,22 @@ public class DatabaseManager {
     public void insertWords(Object object){
         Connection connection = initConnection();
         WordList wordList = (WordList) object;
+
+        List<String> doplist = new ArrayList<String>();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from dictionary");
+
+            while (resultSet.next()){
+                String originalWord = resultSet.getString("word");
+                doplist.add(originalWord);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("insert into dictionary(word, translate) " +
@@ -144,6 +161,8 @@ public class DatabaseManager {
             for (Word word:wordList.getWord()) {
                 preparedStatement.setString(1,word.getOriginalWord());
                 preparedStatement.setString(2,word.getTranslate());
+                if(doplist.contains(word.getOriginalWord()))
+                    continue;
                 preparedStatement.executeUpdate();
             }
 
@@ -152,10 +171,46 @@ public class DatabaseManager {
         }
     }
 
+    private List<String> doplistWords = new ArrayList<String>();
+
     public void insertUsers(Object object){
         Connection connection = initConnection();
         UserList userList = (UserList) object;
+
+
+        List<String> doplist = new ArrayList<String>();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from users");
+
+            while (resultSet.next()){
+                String nickname = resultSet.getString("nickname");
+                doplist.add(nickname);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+//        List<String> doplistWords = new ArrayList<String>();
+////        Statement statement = null;
+//        try {
+//            statement = connection.createStatement();
+//            ResultSet resultSet = statement.executeQuery("select * from dictionary");
+//
+//            while (resultSet.next()){
+//                String originalWord = resultSet.getString("word");
+//                doplistWords.add(originalWord);
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
         for(User myuser:userList.getUser()) {
+            if(doplist.contains(myuser.getNickname()))
+                continue;
             List<User.Words.Word> wordList;
             try {
                 PreparedStatement preparedStatement =
@@ -173,8 +228,11 @@ public class DatabaseManager {
                 wordList = myuser.getWords().getWord();
                 for (User.Words.Word word : wordList) {
                     preparedStatement2.setString(1, word.getOriginalWord());
+                    if(word.getOriginalWord()==null || doplistWords.contains(word.getOriginalWord()))
+                        continue;
                     preparedStatement2.setString(2, word.getTranslate());
                     preparedStatement2.executeUpdate();
+                    doplistWords.add(word.getOriginalWord());
                 }
 
                 char c;
@@ -228,12 +286,18 @@ public class DatabaseManager {
     public void insertConversations(Object object){
         Connection connection = initConnection();
         ConversationList conversationList = (ConversationList) object;
+//        UserList helpUserList  = new UserList();
+        ArrayList<User> userArrayList = new ArrayList<User>();
         for(Conversation conversation:conversationList.getConversation()) {
             User userA = conversation.getUserA();
             User userB = conversation.getUserB();
             UserList userList = new UserList();
-            userList.getUser().add(userA);
-            userList.getUser().add(userB);
+            if(!userArrayList.contains(userA))
+                userList.getUser().add(userA);
+            if(!userArrayList.contains(userB))
+                userList.getUser().add(userB);
+            userArrayList.add(userA);
+            userArrayList.add(userB);
             insertUsers(userList);
 
             //Запрос после вставки в users,dictionary и binding
@@ -277,6 +341,23 @@ public class DatabaseManager {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+        doplistWords = new ArrayList<String>();
+    }
+
+    public void clearDatabase(){
+        Connection connection = initConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeQuery("truncate table binding");
+            statement.executeQuery("truncate table conversations");
+            statement.executeQuery("SET FOREIGN_KEY_CHECKS = 0");
+            statement.executeQuery("truncate table dictionary");
+            statement.executeQuery("truncate table users");
+            statement.executeQuery("SET FOREIGN_KEY_CHECKS = 1");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

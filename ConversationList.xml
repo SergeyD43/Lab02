@@ -24,12 +24,16 @@
             <isAdmin>false</isAdmin>
         </userA>
         <userB>
-            <id>3</id>
+            <id>2</id>
             <nickname>roma</nickname>
             <name>Роман</name>
             <surname>Романов</surname>
             <password>pasroma</password>
             <words>
+                <word>
+                    <originalWord>страна</originalWord>
+                    <translate>country</translate>
+                </word>
                 <word>
                     <originalWord>Россия</originalWord>
                     <translate>Russia</translate>
@@ -47,10 +51,6 @@
                     <translate>water</translate>
                 </word>
                 <word>
-                    <originalWord>страна</originalWord>
-                    <translate>country</translate>
-                </word>
-                <word>
                     <originalWord>животное</originalWord>
                     <translate>animal</translate>
                 </word>
@@ -61,7 +61,7 @@
             </words>
             <isAdmin>false</isAdmin>
         </userB>
-        <text>conversation 1-3</text>
+        <text>conversation 1</text>
     </conversation>
     <conversation>
         <userA>
@@ -87,7 +87,7 @@
             <isAdmin>false</isAdmin>
         </userA>
         <userB>
-            <id>5</id>
+            <id>3</id>
             <nickname>donald</nickname>
             <name>Дональд</name>
             <surname>Трамп</surname>
@@ -97,10 +97,21 @@
             </words>
             <isAdmin>false</isAdmin>
         </userB>
-        <text>conversation 1-5</text>
+        <text>conversation 2</text>
     </conversation>
     <conversation>
         <userA>
+            <id>3</id>
+            <nickname>donald</nickname>
+            <name>Дональд</name>
+            <surname>Трамп</surname>
+            <password>pasdonald</password>
+            <words>
+                <word/>
+            </words>
+            <isAdmin>false</isAdmin>
+        </userA>
+        <userB>
             <id>4</id>
             <nickname>angela</nickname>
             <name>Ангела</name>
@@ -121,18 +132,7 @@
                 </word>
             </words>
             <isAdmin>false</isAdmin>
-        </userA>
-        <userB>
-            <id>5</id>
-            <nickname>donald</nickname>
-            <name>Дональд</name>
-            <surname>Трамп</surname>
-            <password>pasdonald</password>
-            <words>
-                <word/>
-            </words>
-            <isAdmin>false</isAdmin>
         </userB>
-        <text>conversation 4-5</text>
+        <text>conversation 3</text>
     </conversation>
 </conversationList>

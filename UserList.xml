@@ -24,22 +24,15 @@
     </user>
     <user>
         <id>2</id>
-        <nickname>admin</nickname>
-        <name>Админ</name>
-        <surname>Админов</surname>
-        <password>pasadmin</password>
-        <words>
-            <word/>
-        </words>
-        <isAdmin>true</isAdmin>
-    </user>
-    <user>
-        <id>3</id>
         <nickname>roma</nickname>
         <name>Роман</name>
         <surname>Романов</surname>
         <password>pasroma</password>
         <words>
+            <word>
+                <originalWord>страна</originalWord>
+                <translate>country</translate>
+            </word>
             <word>
                 <originalWord>Россия</originalWord>
                 <translate>Russia</translate>
@@ -57,10 +50,6 @@
                 <translate>water</translate>
             </word>
             <word>
-                <originalWord>страна</originalWord>
-                <translate>country</translate>
-            </word>
-            <word>
                 <originalWord>животное</originalWord>
                 <translate>animal</translate>
             </word>
@@ -68,6 +57,17 @@
                 <originalWord>иностранный</originalWord>
                 <translate>foreign</translate>
             </word>
+        </words>
+        <isAdmin>false</isAdmin>
+    </user>
+    <user>
+        <id>3</id>
+        <nickname>donald</nickname>
+        <name>Дональд</name>
+        <surname>Трамп</surname>
+        <password>pasdonald</password>
+        <words>
+            <word/>
         </words>
         <isAdmin>false</isAdmin>
     </user>
@@ -95,13 +95,13 @@
     </user>
     <user>
         <id>5</id>
-        <nickname>donald</nickname>
-        <name>Дональд</name>
-        <surname>Трамп</surname>
-        <password>pasdonald</password>
+        <nickname>admin</nickname>
+        <name>Админ</name>
+        <surname>Админов</surname>
+        <password>pasadmin</password>
         <words>
             <word/>
         </words>
-        <isAdmin>false</isAdmin>
+        <isAdmin>true</isAdmin>
     </user>
 </userList>
