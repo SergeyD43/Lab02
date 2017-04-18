@@ -34,6 +34,7 @@ public class Main {
         //Чистка базы
         logger.info("Очистка базы данных");
         databaseManager.clearDatabase();
+        //Конец очистки
 
         WordList wordList2 = new WordList();
         UserList userList2 = new UserList();
