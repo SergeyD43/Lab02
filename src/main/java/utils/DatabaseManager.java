@@ -12,33 +12,11 @@ public class DatabaseManager {
     private static final Logger logger = Logger.getLogger(DatabaseManager.class);
 
     /**
-     * Соединение с БД
-     * @return Connection
-     */
-    public Connection initConnection(){
-        Connection connection = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            logger.fatal("Отсутствует драйвер базы данных");
-        }
-        try {
-
-            connection =
-                    DriverManager.getConnection("jdbc:mysql://localhost:3306/school","root", "123456");
-            logger.info("Соедиение с базой данных установлено");
-        } catch (SQLException e) {
-            logger.fatal("Не удалось установить соединение с базой данных");
-        }
-        return connection;
-    }
-
-    /**
      * Выполняет запрос, для получения списка users
      * @return users
      */
     public UserList selectUsers(){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         UserList setUsers = new UserList();
         try {
             Statement statement = connection.createStatement();
@@ -92,7 +70,7 @@ public class DatabaseManager {
      * @return conversations
      */
     public ConversationList selectConversation(){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         ConversationList conversationList = new ConversationList();
         UserList userList = selectUsers();
 
@@ -133,7 +111,7 @@ public class DatabaseManager {
      * @return words
      */
     public WordList selectWords(){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         WordList wordList = new WordList();
 
         Statement statement = null;
@@ -142,13 +120,13 @@ public class DatabaseManager {
             ResultSet resultSet = statement.executeQuery("select * from dictionary");
             while (resultSet.next()){
                 int id = resultSet.getInt("id_word");
-                String word = resultSet.getString("word");
+                String originalWord = resultSet.getString("word");
                 String translate = resultSet.getString("translate");
-                Word word1 = new Word();
-                word1.setId(id);
-                word1.setOriginalWord(word);
-                word1.setTranslate(translate);
-                wordList.getWord().add(word1);
+                Word word = new Word();
+                word.setId(id);
+                word.setOriginalWord(originalWord);
+                word.setTranslate(translate);
+                wordList.getWord().add(word);
             }
         } catch (SQLException e) {
             logger.error("Ошибка при выполении запроса: " + e.getMessage());
@@ -162,7 +140,7 @@ public class DatabaseManager {
      * @param object words
      */
     public void insertWords(Object object){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         WordList wordList = (WordList) object;
 
         List<String> doplist = new ArrayList<String>();
@@ -204,7 +182,7 @@ public class DatabaseManager {
      * @param object users
      */
     public void insertUsers(Object object){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         UserList userList = (UserList) object;
 
         List<String> doplist = new ArrayList<String>();
@@ -302,7 +280,7 @@ public class DatabaseManager {
      * @param object conversations
      */
     public void insertConversations(Object object){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
         ConversationList conversationList = (ConversationList) object;
         ArrayList<User> userArrayList = new ArrayList<User>();
         for(Conversation conversation:conversationList.getConversation()) {
@@ -366,7 +344,7 @@ public class DatabaseManager {
      * Чистит БД
      */
     public void clearDatabase(){
-        Connection connection = initConnection();
+        Connection connection = SingletonDBConnection.getInstance().connect();
 
         try {
             Statement statement = connection.createStatement();
